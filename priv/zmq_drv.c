@@ -401,6 +401,7 @@ zmqdrv_send(zmq_drv_t *zmq_drv, ErlIOVec *ev)
 
     if (zmq_msg_init_data(&msg, buf, size, NULL, NULL)) {
         zmqdrv_error(zmq_drv->zmq_context, zmq_strerror(zmq_errno()));
+        free(buf);
         return;
     }
 
