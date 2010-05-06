@@ -298,6 +298,7 @@ zmqdrv_setsockopt(zmq_drv_t *zmq_drv, ErlIOVec *ev)
         zmqdrv_error(zmq_drv->zmq_context, zmq_strerror(zmq_errno()));
         return;
     }
+
     zmqdrv_ok(zmq_drv);
 }
 
@@ -338,6 +339,8 @@ zmqdrv_bind(zmq_drv_t *zmq_drv, ErlIOVec *ev)
         zmqdrv_error(zmq_drv->zmq_context, zmq_strerror(zmq_errno()));
         return;
     }
+
+    zmqdrv_ok(zmq_drv);
 }
 
 static void
@@ -381,14 +384,22 @@ zmqdrv_send(zmq_drv_t *zmq_drv, ErlIOVec *ev)
     void *s;
     void *data;
     size_t size;
+    void *buf;
+    zmq_msg_t msg;
 
     memcpy(&s, (void *)(ev->iov[1].iov_base + 4), sizeof(s));
     data = (void *)(ev->iov[1].iov_base + 12);
     size = ev->iov[1].iov_len - 12;
 
-    zmq_msg_t msg;
+    /* FIXME Is there a way to avoid this? */
+    buf = malloc(size);
+    if (!buf) {
+        zmqdrv_error(zmq_drv->zmq_context, strerror(ENOMEM));
+        return;
+    }
+    memcpy(buf, data, size);
 
-    if (zmq_msg_init_data(&msg, data, size, NULL, NULL)) {
+    if (zmq_msg_init_data(&msg, buf, size, NULL, NULL)) {
         zmqdrv_error(zmq_drv->zmq_context, zmq_strerror(zmq_errno()));
         return;
     }
