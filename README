@@ -2,7 +2,7 @@ Erlang bindings for ZeroMQ (http://www.zeromq.org).
 
 Examples
     PUB/SUB zmq_pubserver/zmq_subclient
-    PUB/SUB zmq_repserver/zmq_reqclient
+    REQ/REP zmq_repserver/zmq_reqclient
 
 License/Copyright
 "THE BEER-WARE LICENSE"
