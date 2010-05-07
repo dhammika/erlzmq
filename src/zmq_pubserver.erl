@@ -1,4 +1,4 @@
-% Basic pub server for testing.
+% Basic PUB/SUB server for testing.
 
 -module(zmq_pubserver).
 -export([run/0]).
