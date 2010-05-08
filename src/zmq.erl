@@ -2,11 +2,7 @@
 %%% @doc
 %%% Erlang bindings for ZeroMQ.
 %%% ------------------------------------------------------------------
-%%% "THE BEER-WARE LICENSE"
-%%%  <dhammika@gmail.com> wrote this file. As long as you retain this 
-%%%  notice you can do whatever you want with this stuff. If we meet 
-%%%  some day, and you think this stuff is worth it, you can buy me a 
-%%%  beer in return.
+%%% <dhammika@gmail.com> wrote this code, copyright disclaimed.
 %%% ------------------------------------------------------------------
 %%% @end
 %%%-------------------------------------------------------------------
@@ -315,4 +311,6 @@ driver(Port, Message) ->
     receive
 	    Data ->
 	        Data
+%    after infinity -> 
+%        timeout
     end.
