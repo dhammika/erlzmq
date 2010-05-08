@@ -21,10 +21,5 @@ reqrep(Socket) ->
             io:format("Snd ~p ~n", [binary_to_list(Data)]);
         other -> other
     end,
-    sleep(1000),
+    timer:sleep(1000),
     reqrep(Socket).
-
-sleep(MilliSecs) ->
-    receive 
-    after MilliSecs -> true
-    end.

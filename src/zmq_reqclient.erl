@@ -16,7 +16,7 @@ run() ->
 reqrep(Socket, MsgIndex) ->
     send(Socket, MsgIndex),
     recv(Socket),
-    sleep(1000),
+    timer:sleep(1000),
     reqrep(Socket, MsgIndex + 1).
 
 send(Socket, MsgIndex) ->
@@ -32,9 +32,4 @@ recv(Socket) ->
         {ok, Data} ->
             io:format("Rcv ~p ~n", [binary_to_list(Data)]);
         other -> other
-    end.
-
-sleep(MilliSecs) ->
-    receive
-    after MilliSecs -> true
     end.
