@@ -21,12 +21,7 @@ send(Socket, MsgIndex) ->
     io:format("Snd ~p ~n", [Data]),
     case zmq:send(Socket, list_to_binary(Data)) of 
         ok -> 
-            sleep(1000),
+            timer:sleep(1000),
             send(Socket, MsgIndex + 1);
         other -> other
-    end.
-
-sleep(MilliSecs) ->
-    receive 
-    after MilliSecs -> true
     end.
