@@ -4,6 +4,9 @@ Examples
     PUB/SUB zmq_pubserver/zmq_subclient
     REQ/REP zmq_repserver/zmq_reqclient
 
+Build
+Set ERL_INTERFACE_DIR and ZMQ_DIR paths in priv/Makefile.
+
 License/Copyright
 The author disclaims copyright.
 If you find this code useful you can buy me a beer in return.
