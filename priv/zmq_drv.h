@@ -9,6 +9,9 @@
 #include <erl_driver.h>
 #include <ei.h>
 
+#ifndef ZMQDRV_H
+#define ZMQDRV_H
+
 /* Erlang driver commands. */
 #define ZMQ_INIT        1
 #define ZMQ_TERM        2
@@ -25,3 +28,5 @@ typedef struct {
     ErlDrvPort port;
     void *zmq_context;
 } zmq_drv_t;
+
+#endif
