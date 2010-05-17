@@ -1,6 +1,10 @@
 Erlang bindings for ZeroMQ (http://www.zeromq.org).
 
+This is experimental code, expect frequent api/code changes. 
+
 Examples
+Following samples require libzmq.so, if zeromq library is not installed 
+include libzmq.so path in LD_LIBRARY_PATH.
     PUB/SUB zmq_pubserver/zmq_subclient
     REQ/REP zmq_repserver/zmq_reqclient
 
